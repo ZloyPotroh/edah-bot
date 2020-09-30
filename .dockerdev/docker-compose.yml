@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  node:
+    build: .dockerdev/node
+    volumes:
+      - .:/usr/src/app
+      - node_modules:/app/node_modules
+    environment:
+      - NODE_ENV=dev
+      - BOT_TOKEN=${BOT_TOKEN}
+      - TEST_SECRET=${TEST_SECRET}
+      - TEST_CHAT_ID=${TEST_CHAT_ID}
+    ports:
+      - '3000:3000'
+
+volumes:
+  node_modules:
